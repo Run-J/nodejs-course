@@ -15,17 +15,19 @@ const geocode = (address, callback) => {
         } else if (response.body.features.length === 0) {
             callback('Unable to find location. Try another search', undefined);
         } else {
-            const longtitude = response.body.features[0].geometry.coordinates[0];
+            const longitude = response.body.features[0].geometry.coordinates[0];
             const latitude = response.body.features[0].geometry.coordinates[1];
 
             callback(undefined, {
-                longtitude: response.body.features[0].geometry.coordinates[0],
+                longitude: response.body.features[0].geometry.coordinates[0],
                 latitude: response.body.features[0].geometry.coordinates[1],
                 location: response.body.features[0].properties.full_address
             })
         }
     })
 };
+
+
 
 
 module.exports = geocode;
