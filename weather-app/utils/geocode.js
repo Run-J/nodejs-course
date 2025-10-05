@@ -9,19 +9,19 @@ const geocode = (address, callback) => {
     // you can now use this url in fetch or reques
     // console.log(url); 
 
-    request({url: url, json: true}, (error, response) => {
+    request({url, json: true}, (error, { body }) => {
         if (error) {
             callback('Unable to connect to location services!', undefined);
-        } else if (response.body.features.length === 0) {
+        } else if (body.features.length === 0) {
             callback('Unable to find location. Try another search', undefined);
         } else {
-            const longitude = response.body.features[0].geometry.coordinates[0];
-            const latitude = response.body.features[0].geometry.coordinates[1];
+            const longitude = body.features[0].geometry.coordinates[0];
+            const latitude = body.features[0].geometry.coordinates[1];
 
             callback(undefined, {
-                longitude: response.body.features[0].geometry.coordinates[0],
-                latitude: response.body.features[0].geometry.coordinates[1],
-                location: response.body.features[0].properties.full_address
+                longitude: body.features[0].geometry.coordinates[0],
+                latitude: body.features[0].geometry.coordinates[1],
+                location: body.features[0].properties.full_address
             })
         }
     })
