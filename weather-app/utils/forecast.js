@@ -15,11 +15,9 @@ const forecast = (longitude, latitude, callback) => {
         } else {
             // console.log(`${response.body.current.weather_descriptions}. It is currently ${response.body.current.temperature} degress out. There is a ${response.body.current.precip} chance of rain.`)
 
-            callback(undefined, {
-                weatherDescriptions: response.body.current.weather_descriptions,
-                currentTemperature: response.body.current.temperature,
-                precipitation: response.body.current.precip,
-            })
+            callback(undefined, 
+                `${response.body.current.weather_descriptions}. It is currently ${response.body.current.temperature} degress out. There is a ${response.body.current.precip} chance of rain.`
+            )
         }
     });
 }

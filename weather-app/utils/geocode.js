@@ -3,7 +3,7 @@ const request = require('request')
 const geocode = (address, callback) => {
     const url = "https://api.mapbox.com/search/geocode/v6/forward?q=" 
         + encodeURIComponent(address) 
-        + "&access_token=pk.eyJ1IjoicnVuLWoiLCJhIjoiY21nOHRoOTQ2MGJsOTJrcHR2Y3V0bmgybCJ9.BSU06na5LzFeZ8h9LcXunw&limit=1";
+        + "&access_token=pk.eyJ1IjoicnVuLWoiLCJhIjoiY21nYWNqcG9vMHQwMjJrb2N6eXQ2N3pnciJ9.dXMK3aXuQHOvsYa85VZhQg&limit=1";
     
     // just to check the final URL
     // you can now use this url in fetch or reques
