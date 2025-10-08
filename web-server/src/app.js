@@ -1,13 +1,37 @@
 const path = require('path')
 const express = require('express')
-
-console.log(__dirname)
-console.log(path.join(__dirname, '../public'))
+const { title } = require('process')
 
 const app = express()
+
 const publicDirectoryPath = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname, '../views')
+
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
 
 app.use(express.static(publicDirectoryPath))
+
+app.get('', (req, res) => {
+    res.render('index', {
+        title: 'Weather Page',
+        name: 'Run',
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About page',
+        name: 'Run'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('Help', {
+        title: 'Help page',
+        helpText: 'This is some helpful text',
+    })
+})
 
 app.get('/weather', (req, res) => {
     res.send({
